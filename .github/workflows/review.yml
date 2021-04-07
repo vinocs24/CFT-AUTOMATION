@@ -1,0 +1,59 @@
+name: Review All Resources
+
+# Triggered on all push events
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+
+  # ## Commented out to save minutes
+  # superlinter:
+  #   name: SuperLinter
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@master
+  #     - name: Run Superlinter
+  #       id: superlinter
+  #       uses: github/super-linter@v3.13.2
+
+  checkov:
+    name: Checkov
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+      - name: Run Checkov
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          quiet: true
+          #skip_check: CKV_AWS_1 # optional: skip a specific check_id
+          #framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
+
+  cfn-nag:
+    name: Cfn-Nag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: CFN-NAG
+        uses: stelligent/cfn_nag@master
+        with:
+          input_path: cloudformation
+
+  cfn-lint:
+    runs-on: ubuntu-latest
+    name: Cfn-Lint
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: cfn-lint
+      uses: scottbrenner/cfn-lint-action@master
+      with:
+        args: "cloudformation/*"
