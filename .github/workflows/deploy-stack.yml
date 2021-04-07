@@ -30,6 +30,6 @@ jobs:
         aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{env.AWS_DEFAULT_REGION}}
     - name: Deploy CloudFormation Stack
-      id: Deploy CloudFormation Stack
+      id: Deploy-CFT-Stack
       run: |
         aws cloudformation create-stack --stack-name myteststack --template-body file:${{ env.TEMPLATE }} --parameters ParameterKey=VpcCIDR, ParameterValue=10.192.0.0/16
