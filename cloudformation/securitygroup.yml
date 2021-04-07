@@ -24,12 +24,14 @@ Resources:
           VpcId: !Ref VPC
           SecurityGroupIngress:
           -
+              Description: Allow inbound traffic to ElasticSearch from VPC CIDR
               IpProtocol: tcp
               FromPort: 443
               ToPort: 443
               CidrIp: "10.192.1.0/16"
           SecurityGroupEgress:
           -
+              Description: Allow outbound traffic to ElasticSearch from VPC CIDR
               IpProtocol: tcp
               FromPort: 80
               ToPort: 80
