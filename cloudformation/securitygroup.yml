@@ -17,18 +17,24 @@ Resources:
             Tags:
                 - Key: Name
                   Value: github-vpc
-    SG:
-      Type: AWS::EC2::SecurityGroup
-      Properties:
-        GroupDescription: "Traffic into CloudFormation"
-        SecurityGroupIngress:
-        -
-            IpProtocol: tcp
-            FromPort: 443
-            ToPort: 443
-            CidrIp: "10.192.1.0/16"
-        VpcId: !Ref VPC
-        Tags:
+    SecurityGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+          GroupDescription: Allow http to client host
+          VpcId: !Ref VPC
+          SecurityGroupIngress:
           -
-            Key: Name
-            Value: github-SG
+              IpProtocol: tcp
+              FromPort: 443
+              ToPort: 443
+              CidrIp: "10.192.1.0/16"
+          SecurityGroupEgress:
+          -
+              IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+              CidrIp: "10.192.1.0/16"          
+          Tags:
+            -
+              Key: Name
+              Value: github-SG              
