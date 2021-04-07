@@ -29,7 +29,7 @@ jobs:
         aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{env.AWS_DEFAULT_REGION}}
-    - name: Sync to S3
-      id: sync-s3
+    - name: Deploy CloudFormation Stack
+      id: Deploy CloudFormation Stack
       run: |
-        aws cloudformation create-stack --stack-name myteststack --template-body file:${{ env.TEMPLATE }}  
+        aws cloudformation create-stack --stack-name myteststack --template-body file:${{ env.TEMPLATE }} --parameters ParameterKey=VpcCIDR, ParameterValue=10.192.0.0/16
