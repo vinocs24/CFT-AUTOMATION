@@ -32,4 +32,4 @@ jobs:
     - name: Deploy CloudFormation Stack
       id: Deploy-CFT-Stack
       run: |
-        aws cloudformation create-stack --stack-name myteststack --template-body file:${{ env.TEMPLATE }} --parameters ParameterKey=VpcCIDR, ParameterValue=10.192.0.0/16
+        aws cloudformation create-stack --stack-name myteststack --template-body file:${{ env.TEMPLATE }} --parameters ParameterKey=VpcCIDR, ParameterValue="10.192.0.0/16"
