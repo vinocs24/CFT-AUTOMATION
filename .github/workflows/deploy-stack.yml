@@ -11,11 +11,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: mgenteluci/cloudformation-deploy-action@v1.4.0
       env:
-        TEMPLATE: 'securitygroup.yml'
+        TEMPLATE: 'https://s3-file-test-github.s3.amazonaws.com/stack/securitygroup.yml'
         AWS_STACK_NAME: 'my-stack'
         AWS_DEFAULT_REGION: us-east-1
-        AWS_DEFAULT_OUTPUT: json
-        AWS_CFN_BUCKET: s3-file-test-github
-        AWS_BUCKET_PREFIX: stack
         AWS_ACCESS_KEY_ID: ${{ secrets.DELIVER_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.DELIVER_AWS_SECRET_ACCESS_KEY }}      
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.DELIVER_AWS_SECRET_ACCESS_KEY }}  
