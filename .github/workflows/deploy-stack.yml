@@ -2,7 +2,7 @@
 name: "CloudFormation Stack Deploy"
 
 # Triggered on all manual
-
+# Triggered on all manual
 on: [workflow_dispatch]
 
 env:
