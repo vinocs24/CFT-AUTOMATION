@@ -2,9 +2,10 @@
 name: "CloudFormation Stack Deploy"
 
 # Triggered on all manual
-# Triggered on all manual
-on: push
-
+on:
+  push:
+    branch:
+      - master
 env:
 
   AWS_DEFAULT_REGION: us-east-1
