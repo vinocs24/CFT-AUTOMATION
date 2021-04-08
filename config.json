@@ -1,0 +1,30 @@
+{
+  "EffectualServiceTemplate": "2020-10-01",
+  "Description": "Effectual Job Functions Role",
+  "Service": {
+      "Name": "CFT-AUTOMATION",
+      "Description": "CFT-AUTOMATION",
+      "StackName": "CFT-AUTOMATION",
+      "Version": "v1",
+      "TemplateUrl": "https://s3-file-test-github.s3.amazonaws.com/stack/securitygroup.yml", 
+      "GitURL": "https://github.com/vinocs24/CFT-AUTOMATION", 
+      "Region": "us-east-1",
+      "ExecutionRole": "Effectual-Admin"
+      "SessionName": "Effectual-Automation",
+      "TestAccountId": "941913696044"
+  },
+  "Customers": [
+    {
+      "Name": "Account-1",
+      "AccountId": "941913696044",
+      "Type": "Resale",
+      "CID": "123"
+    },
+    {
+      "Name": "Account-1",
+      "AccountId": "137902518890",
+      "Type": "Resale",
+      "CID": "4567"
+    }
+  ]
+}
